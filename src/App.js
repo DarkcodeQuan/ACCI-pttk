@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
+import Dashboard from "./pages/Dashboard";
+import Registration from "./pages/Registration/Registration";
+import Payment from "./pages/Payment";
+import Reschedule from "./pages/Reschedule";
+import Certificates from "./pages/Certificates";
+import NotFound from "./pages/NotFound";
 
 function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="flex min-h-screen bg-gray-100">
+        <Sidebar isOpen={isSidebarOpen} />
+        <div className="flex-1 flex flex-col">
+          <Header onToggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
+          <main className="flex-1 p-4">
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/registration" element={<Registration />} />
+              <Route path="/payment" element={<Payment />} />
+              <Route path="/reschedule" element={<Reschedule />} />
+              <Route path="/certificates" element={<Certificates />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+        </div>
+      </div>
+    </Router>
   );
 }
 
