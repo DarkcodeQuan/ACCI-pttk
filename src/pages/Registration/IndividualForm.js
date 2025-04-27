@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ErrorMessage from "../../components/ErrorMessage";
 
 export default function IndividualForm({ onSubmit }) {
   const [form, setForm] = useState({
@@ -9,12 +10,18 @@ export default function IndividualForm({ onSubmit }) {
     examDate: "",
   });
 
+  const [error, setError] = useState("");
+
   const handleSubmit = () => {
-    if (!form.name || !form.email || !form.phone || !form.examType || !form.examDate) {
-      alert("Vui lòng điền đầy đủ thông tin!");
+    const { name, email, phone, examDate } = form;
+
+    if (!name.trim() || !email.trim() || !phone.trim() || !examDate) {
+      setError("Vui lòng điền đầy đủ thông tin!");
       return;
     }
-    onSubmit(form); // Gửi dữ liệu lên component cha
+
+    onSubmit(form);
+    setError("");
     setForm({
       name: "",
       email: "",
@@ -26,11 +33,13 @@ export default function IndividualForm({ onSubmit }) {
 
   return (
     <div className="space-y-2 max-w-xl mx-auto">
+      {error && <ErrorMessage message={error} onClose={() => setError("")} />}
+
       <h2 className="font-semibold text-lg">Individual Registration</h2>
 
       <input
         className="border p-2 w-full"
-        placeholder="Full Name"
+        placeholder="Name"
         value={form.name}
         onChange={(e) => setForm({ ...form, name: e.target.value })}
       />
@@ -47,7 +56,6 @@ export default function IndividualForm({ onSubmit }) {
         onChange={(e) => setForm({ ...form, phone: e.target.value })}
       />
 
-      {/* Exam Type */}
       <select
         className="border p-2 w-full"
         value={form.examType}
@@ -57,7 +65,6 @@ export default function IndividualForm({ onSubmit }) {
         <option value="Tin học">Tin học</option>
       </select>
 
-      {/* Exam Date */}
       <input
         type="date"
         className="border p-2 w-full"
@@ -67,7 +74,7 @@ export default function IndividualForm({ onSubmit }) {
 
       <button
         onClick={handleSubmit}
-        className="px-4 py-2 bg-blue-600 text-white rounded"
+        className="px-4 py-2 bg-blue-600 text-white rounded mt-4"
       >
         Submit
       </button>

@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 const Sidebar = ({ isOpen }) => {
   const location = useLocation();
   const navItems = [
-    { path: "/", label: "Dashboard" },
+    { path: "/", label: "Danh sách đăng ký" },
     { path: "/registration", label: "Đăng ký" },
     { path: "/payment", label: "Thanh toán" },
     { path: "/reschedule", label: "Gia hạn thi" },
@@ -14,9 +14,11 @@ const Sidebar = ({ isOpen }) => {
     <div
       className={`${
         isOpen ? "w-64" : "w-0"
-      } bg-white shadow-md h-screen overflow-hidden transition-all duration-300`}
+      } bg-black shadow-md h-screen overflow-hidden transition-all duration-300`}
     >
-      <div className="p-4 text-xl font-bold border-b">Menu</div>
+      <div className="p-4 text-xl font-bold border-b border-white text-white">
+        Menu
+      </div>
       <nav className="p-4">
         {navItems.map((item) => (
           <Link
@@ -24,8 +26,8 @@ const Sidebar = ({ isOpen }) => {
             to={item.path}
             className={`block px-3 py-2 rounded-lg mb-2 ${
               location.pathname === item.path
-                ? "bg-blue-500 text-white"
-                : "text-gray-700 hover:bg-gray-100"
+                ? "bg-white text-black font-bold"
+                : "text-white hover:bg-white hover:text-black"
             }`}
           >
             {item.label}

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ErrorMessage from "../../components/ErrorMessage";
 
 export default function GroupForm({ onSubmit }) {
   const [form, setForm] = useState({
@@ -9,6 +10,8 @@ export default function GroupForm({ onSubmit }) {
     examDate: "",
     participants: [{ name: "", email: "", phone: "" }],
   });
+
+  const [error, setError] = useState("");
 
   const handleParticipantChange = (index, e) => {
     const newParticipants = [...form.participants];
@@ -31,14 +34,14 @@ export default function GroupForm({ onSubmit }) {
   const handleSubmit = () => {
     // Kiểm tra thông tin nhóm
     if (!form.groupName || !form.groupEmail || !form.groupPhone || !form.examType || !form.examDate) {
-      alert("Vui lòng điền đầy đủ thông tin nhóm!");
+      setError("Vui lòng điền đầy đủ thông tin nhóm!");
       return;
     }
 
     // Kiểm tra thông tin của từng thành viên
     for (const participant of form.participants) {
       if (!participant.name || !participant.email || !participant.phone) {
-        alert("Vui lòng điền đầy đủ thông tin cho tất cả thành viên!");
+        setError("Vui lòng điền đầy đủ thông tin cho tất cả thành viên!");
         return;
       }
     }
@@ -56,6 +59,8 @@ export default function GroupForm({ onSubmit }) {
 
   return (
     <div className="space-y-2 max-w-xl mx-auto">
+      {error && <ErrorMessage message={error} onClose={() => setError("")} />}  
+
       <h2 className="font-semibold text-lg">Group Registration</h2>
 
       <input
@@ -137,7 +142,7 @@ export default function GroupForm({ onSubmit }) {
 
       <div className="mt-4 flex space-x-2">
         <button
-          className="px-4 py-2 bg-blue-600 text-white rounded"
+          className="px-4 py-2 bg-blue-600 text-white rounded mt-4"
           onClick={handleAddParticipant}
         >
           Add Participant
@@ -145,7 +150,7 @@ export default function GroupForm({ onSubmit }) {
 
         <button
           onClick={handleSubmit}
-          className="px-4 py-2 bg-blue-600 text-white rounded"
+          className="px-4 py-2 bg-blue-600 text-white rounded mt-4"
         >
           Submit
         </button>

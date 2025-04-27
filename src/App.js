@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Table/Dashboard";
 import Registration from "./pages/Registration/Registration";
 import Payment from "./pages/Payment";
 import Reschedule from "./pages/Reschedule";
