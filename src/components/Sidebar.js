@@ -5,8 +5,8 @@ const Sidebar = ({ isOpen }) => {
   const navItems = [
     { path: "/", label: "Danh sách đăng ký" },
     { path: "/registration", label: "Đăng ký" },
-    { path: "/payment", label: "Thanh toán" },
     { path: "/reschedule", label: "Gia hạn thi" },
+    { path: "/payment", label: "Thanh toán" },
     { path: "/certificates", label: "Chứng chỉ" },
   ];
 

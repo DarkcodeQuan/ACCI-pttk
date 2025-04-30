@@ -4,7 +4,10 @@ import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Dashboard from "./pages/Table/Dashboard";
 import Registration from "./pages/Registration/Registration";
-import Payment from "./pages/Payment";
+import { CandidatesProvider } from './context/CandidatesContext';
+import Payment from "./pages/Payment/Payment";
+import PaymentQR from "./pages/Payment/PaymentQR";
+import PaymentMethod from "./pages/Payment/PaymentMethod";
 import Reschedule from "./pages/Reschedule";
 import Certificates from "./pages/Certificates";
 import NotFound from "./pages/NotFound";
@@ -15,24 +18,28 @@ function App() {
   const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
 
   return (
-    <Router>
-      <div className="flex min-h-screen bg-gray-100">
-        <Sidebar isOpen={isSidebarOpen} />
-        <div className="flex-1 flex flex-col">
-          <Header onToggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
-          <main className="flex-1 p-4">
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/registration" element={<Registration />} />
-              <Route path="/payment" element={<Payment />} />
-              <Route path="/reschedule" element={<Reschedule />} />
-              <Route path="/certificates" element={<Certificates />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
+    <CandidatesProvider>
+      <Router>
+        <div className="flex min-h-screen bg-gray-100">
+          <Sidebar isOpen={isSidebarOpen} />
+          <div className="flex-1 flex flex-col">
+            <Header onToggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
+            <main className="flex-1 p-4">
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/registration" element={<Registration />} />
+                <Route path="/payment" element={<Payment />} />
+                <Route path="/payment-method" element={<PaymentMethod />} />
+                <Route path="/payment-qr" element={<PaymentQR />} />
+                <Route path="/reschedule" element={<Reschedule />} />
+                <Route path="/certificates" element={<Certificates />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </CandidatesProvider>
   );
 }
 
