@@ -84,12 +84,12 @@ export default function GroupForm() {
     <div className="space-y-6 max-w-6xl mx-auto px-4">
       {error && <ErrorMessage message={error} onClose={() => setError("")} />}
 
-      <h2 className="font-semibold text-xl">Đăng ký thí sinh theo đơn vị</h2>
+      <h2 className="text-2xl font-bold mb-4">Đăng ký thí sinh theo đơn vị</h2>
 
       <div className="flex flex-col md:flex-row gap-8">
         {/* Bên trái: Thông tin đơn vị và phần số thí sinh */}
         <div className="flex-1 space-y-4">
-          <div className="bg-white p-4 border rounded shadow h-[400px] overflow-y-auto">
+          <div className="bg-white p-4 border rounded shadow h-[350px] overflow-y-auto">
             <label className="block font-semibold mb-2">Thông tin đơn vị</label>
             <input
               type="text"
@@ -129,7 +129,7 @@ export default function GroupForm() {
 
         {/* Bên phải: Danh sách thí sinh */}
         <div className="flex-1">
-          <div className="bg-white p-4 border rounded shadow h-[400px] overflow-y-auto">
+          <div className="bg-white p-4 border rounded shadow h-[350px] overflow-y-auto">
             <label className="block font-semibold mb-2">Danh sách thí sinh</label>
             <div className="space-y-4">
               {candidates.map((candidate) => (

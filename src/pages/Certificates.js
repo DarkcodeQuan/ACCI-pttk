@@ -4,25 +4,81 @@ import { jsPDF } from "jspdf";
 const mockCertificates = [
   {
     ticket: "ACPI001",
-    name: "Nguyễn Văn A",
+    name: "Trần Duy S",
     examType: "English",
     score: 8.5,
     status: "Đạt",
   },
   {
     ticket: "ACPI002",
-    name: "Trần Thị B",
+    name: "Giang Văn C",
     examType: "Computer",
     score: 4.5,
     status: "Rớt",
   },
   {
     ticket: "ACPI003",
-    name: "Lê Văn C",
+    name: "Giang Văn C",
+    examType: "English",
+    score: 6.5,
+    status: "Đạt",
+  },
+  {
+    ticket: "ACPI004",
+    name: "Nguyễn Anh T",
+    examType: "Computer",
+    score: 6.0,
+    status: "Đạt",
+  },
+  {
+    ticket: "ACPI005",
+    name: "Nguyễn Anh T",
     examType: "English",
     score: 9.0,
     status: "Đạt",
   },
+  {
+    ticket: "ACPI006",
+    name: "Đỗ Duy K",
+    examType: "English",
+    score: 3.0,
+    status: "Rớt",
+  },
+  {
+    ticket: "ACPI007",
+    name: "Nguyễn Định Q",
+    examType: "English",
+    score: 6.0,
+    status: "Đạt",
+  },
+  {
+    ticket: "ACPI008",
+    name: "Nguyễn Đại Q",
+    examType: "Computer",
+    score: 4.5,
+    status: "Rớt",
+  },
+  {
+    ticket: "ACPI009",
+    name: "Trần Lộc Q",
+    examType: "Computer",
+    score: 8.5,
+    status: "Đạt",
+  },
+  {
+    ticket: "ACPI010",
+    name: "Nguyễn Thế H",
+    examType: "Computer",
+    score: 7.5,
+    status: "Đạt",
+  },
+  {
+    ticket: "ACPI011",
+    name: "Trần Xuân K",
+    examType: "English",
+    score: 3.5,
+    status: "Rớt",
+  }
 ];
 
 // Hàm chuyển tên có dấu sang không dấu
@@ -97,20 +153,20 @@ export default function Certificates() {
   );
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
+    <div className="max-w-4xl mx-auto p-6 space-y-4">
       <h1 className="text-2xl font-bold mb-4">Tra cứu chứng chỉ</h1>
       <input
         type="text"
-        placeholder="Nhập mã dự thi..."
+        placeholder="Nhập mã dự thi... Ví dụ: ACPI001"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         className="border border-gray-300 rounded px-4 py-2 w-full mb-6"
       />
 
       {filteredCertificates.length > 0 ? (
-        <div className="space-y-4">
+        <div className="space-y-6">
           {filteredCertificates.map((cert) => (
-            <div key={cert.ticket} className="border p-4 rounded shadow bg-white">
+            <div key={cert.ticket} className="border p-4 rounded shadow bg-white space-y-2">
               <p>
                 <strong>Mã dự thi:</strong> {cert.ticket}
               </p>
