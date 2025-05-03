@@ -4,19 +4,19 @@ export default function CandidateInfo({ form, setForm }) {
       <h3 className="font-semibold mb-2">Thông tin người dự thi</h3>
       <input
         className="border p-2 w-full mb-2"
-        placeholder="Họ và tên người dự thi"
+        placeholder="Họ và tên"
         value={form.candidateName}
         onChange={(e) => setForm({ ...form, candidateName: e.target.value })}
       />
       <input
         className="border p-2 w-full mb-2"
-        placeholder="Số điện thoại người dự thi"
+        placeholder="Số điện thoại"
         value={form.candidatePhone}
         onChange={(e) => setForm({ ...form, candidatePhone: e.target.value })}
       />
       <input
         className="border p-2 w-full mb-2"
-        placeholder="Email người dự thi"
+        placeholder="Email"
         value={form.candidateEmail}
         onChange={(e) => setForm({ ...form, candidateEmail: e.target.value })}
       />

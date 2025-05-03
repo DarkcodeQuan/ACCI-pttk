@@ -72,7 +72,7 @@ const UnpaidCandidates = () => {
                                     <td className="px-4 py-2">
                                         <button
                                             onClick={() => handlePayment(candidate)}
-                                            className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm"
+                                            className="px-3 py-1 bg-gray-800 text-white rounded hover:text-grey-200"
                                         >
                                             Thanh toán
                                         </button>

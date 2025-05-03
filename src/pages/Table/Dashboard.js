@@ -69,7 +69,7 @@ export default function Dashboard() {
             onClick={() => setView("individual")}
             className={`px-4 py-2 rounded font-semibold ${
               view === "individual"
-                ? "bg-blue-600 text-white"
+                ? "bg-gray-800 text-white"
                 : "bg-gray-200 text-gray-700"
             }`}
           >
@@ -79,7 +79,7 @@ export default function Dashboard() {
             onClick={() => setView("group")}
             className={`px-4 py-2 rounded font-semibold ${
               view === "group"
-                ? "bg-blue-600 text-white"
+                ? "bg-gray-800 text-white"
                 : "bg-gray-200 text-gray-700"
             }`}
           >

@@ -95,7 +95,7 @@ export default function GroupForm() {
               type="text"
               value={unit.unitName}
               onChange={(e) => setUnit({ ...unit, unitName: e.target.value })}
-              placeholder="Nhập tên đơn vị"
+              placeholder="Tên đơn vị"
               className="border p-2 w-full mb-4"
             />
             <input
