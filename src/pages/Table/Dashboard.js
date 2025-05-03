@@ -16,21 +16,18 @@ export default function Dashboard() {
       email: "tranthib@example.com",
       examType: "Ngoại ngữ",
       paymentStatus: "Chưa thanh toán",
-      groupName: "Nhóm Alpha"
     },
     { 
       name: "Lê Văn C", 
       email: "levanc@example.com",
       examType: "Tin học",
       paymentStatus: "Đã thanh toán",
-      groupName: "" // cá nhân
     },
     { 
       name: "Phạm Văn D", 
       email: "phamvand@example.com",
       examType: "Ngoại ngữ",
       paymentStatus: "Đã thanh toán",
-      groupName: "Nhóm Beta"
     },
   ]);
 
@@ -43,7 +40,7 @@ export default function Dashboard() {
       paymentStatus: "Đã thanh toán",
       members: [
         { name: "Nguyễn Văn X", email: "nguyenx@example.com" },
-        { name: "Trần Thị Y", email: "trany@example.com" },
+        { name: "Trần Thị Y", email: "trany@example.com" }        
       ],
     },
     {

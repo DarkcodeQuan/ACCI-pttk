@@ -38,13 +38,13 @@ export default function Registration() {
           className={`px-4 py-2 rounded ${mode === "individual" ? "bg-gray-800 text-white" : "bg-gray-200"}`}
           onClick={() => setMode("individual")}
         >
-          Đăng ký cá nhân
+          Đăng ký tự do
         </button>
         <button
           className={`px-4 py-2 rounded ${mode === "group" ? "bg-gray-800 text-white" : "bg-gray-200"}`}
           onClick={() => setMode("group")}
         >
-          Đăng ký nhóm
+          Đăng ký theo đơn vị
         </button>
       </div>
 

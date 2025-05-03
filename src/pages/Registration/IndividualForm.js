@@ -1,83 +1,111 @@
 import { useState } from "react";
+import RegistrarInfo from "./RegistrarInfo";
+import CandidateInfo from "./CandidateInfo";
+import ExamSelector from "./ExamSelector";
 import ErrorMessage from "../../components/ErrorMessage";
+import SuccessModal from "./SuccessModal"; // Đã có sẵn
 
 export default function IndividualForm({ onSubmit }) {
   const [form, setForm] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    examType: "Ngoại ngữ",
-    examDate: "",
+    registrarName: "",
+    registrarPhone: "",
+    registrarEmail: "",
+    candidateName: "",
+    candidateEmail: "",
+    candidatePhone: "",
   });
 
+  const [selectedExams, setSelectedExams] = useState({});
   const [error, setError] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [submittedInfo, setSubmittedInfo] = useState({});
 
   const handleSubmit = () => {
-    const { name, email, phone, examDate } = form;
+    const {
+      registrarName,
+      registrarPhone,
+      registrarEmail,
+      candidateName,
+      candidateEmail,
+      candidatePhone,
+    } = form;
 
-    if (!name.trim() || !email.trim() || !phone.trim() || !examDate) {
-      setError("Vui lòng điền đầy đủ thông tin!");
+    if (
+      !registrarName.trim() ||
+      !registrarPhone.trim() ||
+      !registrarEmail.trim() ||
+      !candidateName.trim() ||
+      !candidateEmail.trim() ||
+      !candidatePhone.trim()
+    ) {
+      setError("Vui lòng điền đầy đủ thông tin người đăng ký và thí sinh!");
       return;
     }
 
-    onSubmit(form);
+    const selectedExamEntries = Object.entries(selectedExams);
+    if (
+      selectedExamEntries.length === 0 ||
+      selectedExamEntries.some(([_, date]) => !date)
+    ) {
+      setError("Vui lòng chọn môn và ngày thi cho từng môn.");
+      return;
+    }
+
+    const submissionData = {
+      ...form,
+      exams: selectedExams,
+    };
+
+    onSubmit(submissionData);
+    setSubmittedInfo({ candidateName, selectedExams });
+    setShowSuccess(true);
     setError("");
     setForm({
-      name: "",
-      email: "",
-      phone: "",
-      examType: "Ngoại ngữ",
-      examDate: "",
+      registrarName: "",
+      registrarPhone: "",
+      registrarEmail: "",
+      candidateName: "",
+      candidateEmail: "",
+      candidatePhone: "",
     });
+    setSelectedExams({});
   };
 
   return (
-    <div className="space-y-2 max-w-xl mx-auto">
+    <div className="space-y-4 max-w-6xl mx-auto px-4"> {/* Cập nhật max-w-6xl và padding */}
       {error && <ErrorMessage message={error} onClose={() => setError("")} />}
+      {showSuccess && (
+        <SuccessModal
+          candidateName={submittedInfo.candidateName}
+          selectedExams={submittedInfo.selectedExams}
+          onClose={() => setShowSuccess(false)}
+        />
+      )}
 
-      <h2 className="font-semibold text-lg">Individual Registration</h2>
+      <h2 className="font-semibold text-xl">Đăng ký thí sinh tự do</h2>
 
-      <input
-        className="border p-2 w-full"
-        placeholder="Name"
-        value={form.name}
-        onChange={(e) => setForm({ ...form, name: e.target.value })}
-      />
-      <input
-        className="border p-2 w-full"
-        placeholder="Email"
-        value={form.email}
-        onChange={(e) => setForm({ ...form, email: e.target.value })}
-      />
-      <input
-        className="border p-2 w-full"
-        placeholder="Phone"
-        value={form.phone}
-        onChange={(e) => setForm({ ...form, phone: e.target.value })}
-      />
+      <div className="flex flex-col md:flex-row gap-8"> {/* Điều chỉnh gap thành 8 */}
+        <div className="flex-1"> {/* Cho phép chia không gian */}
+          <RegistrarInfo form={form} setForm={setForm} />
+        </div>
+        <div className="flex-1"> {/* Cho phép chia không gian */}
+          <CandidateInfo form={form} setForm={setForm} />
+        </div>
+      </div>
 
-      <select
-        className="border p-2 w-full"
-        value={form.examType}
-        onChange={(e) => setForm({ ...form, examType: e.target.value })}
-      >
-        <option value="Ngoại ngữ">Ngoại ngữ</option>
-        <option value="Tin học">Tin học</option>
-      </select>
-
-      <input
-        type="date"
-        className="border p-2 w-full"
-        value={form.examDate}
-        onChange={(e) => setForm({ ...form, examDate: e.target.value })}
+      <ExamSelector
+        selectedExams={selectedExams}
+        setSelectedExams={setSelectedExams}
       />
 
-      <button
-        onClick={handleSubmit}
-        className="px-4 py-2 bg-gray-800 text-white rounded mt-4"
-      >
-        Submit
-      </button>
+      <div className="text-center">
+        <button
+          onClick={handleSubmit}
+          className="mt-4 px-6 py-2 bg-gray-800 text-white rounded hover:text-gray-200"
+        >
+          Đăng ký
+        </button>
+      </div>
     </div>
   );
 }

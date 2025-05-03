@@ -22,7 +22,11 @@ function App() {
       <Router>
         <div className="flex min-h-screen bg-gray-100">
           <Sidebar isOpen={isSidebarOpen} />
-          <div className="flex-1 flex flex-col">
+          <div
+            className={`flex-1 flex flex-col transition-all duration-300 ${
+              isSidebarOpen ? "ml-64" : "ml-0"
+            }`}
+          >
             <Header onToggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
             <main className="flex-1 p-4">
               <Routes>
