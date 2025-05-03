@@ -14,7 +14,7 @@ const Sidebar = ({ isOpen }) => {
     <div
       className={`${
         isOpen ? "w-64" : "w-0"
-      } bg-black shadow-md h-screen overflow-hidden transition-all duration-300`}
+      } bg-gray-800 shadow-md h-screen overflow-hidden transition-all duration-300`}
     >
       <div className="p-4 text-xl font-bold border-b border-white text-white">
         Menu

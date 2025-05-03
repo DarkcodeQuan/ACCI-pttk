@@ -35,13 +35,13 @@ export default function Registration() {
     <div className="space-y-6">
       <div className="flex gap-4">
         <button
-          className={`px-4 py-2 rounded ${mode === "individual" ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+          className={`px-4 py-2 rounded ${mode === "individual" ? "bg-gray-800 text-white" : "bg-gray-200"}`}
           onClick={() => setMode("individual")}
         >
           Đăng ký cá nhân
         </button>
         <button
-          className={`px-4 py-2 rounded ${mode === "group" ? "bg-blue-500 text-white" : "bg-gray-200"}`}
+          className={`px-4 py-2 rounded ${mode === "group" ? "bg-gray-800 text-white" : "bg-gray-200"}`}
           onClick={() => setMode("group")}
         >
           Đăng ký nhóm
