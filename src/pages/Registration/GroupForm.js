@@ -142,7 +142,7 @@ export default function GroupForm({ onSubmit }) {
 
       <div className="mt-4 flex space-x-2">
         <button
-          className="px-4 py-2 bg-blue-600 text-white rounded mt-4"
+          className="px-4 py-2 bg-gray-800 text-white rounded mt-4"
           onClick={handleAddParticipant}
         >
           Add Participant
@@ -150,7 +150,7 @@ export default function GroupForm({ onSubmit }) {
 
         <button
           onClick={handleSubmit}
-          className="px-4 py-2 bg-blue-600 text-white rounded mt-4"
+          className="px-4 py-2 bg-gray-800 text-white rounded mt-4"
         >
           Submit
         </button>

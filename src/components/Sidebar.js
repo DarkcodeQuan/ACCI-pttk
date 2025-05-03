@@ -5,8 +5,8 @@ const Sidebar = ({ isOpen }) => {
   const navItems = [
     { path: "/", label: "Danh sách đăng ký" },
     { path: "/registration", label: "Đăng ký" },
-    { path: "/payment", label: "Thanh toán" },
     { path: "/reschedule", label: "Gia hạn thi" },
+    { path: "/payment", label: "Thanh toán" },
     { path: "/certificates", label: "Chứng chỉ" },
   ];
 
@@ -14,7 +14,7 @@ const Sidebar = ({ isOpen }) => {
     <div
       className={`${
         isOpen ? "w-64" : "w-0"
-      } bg-black shadow-md h-screen overflow-hidden transition-all duration-300`}
+      } bg-gray-800 shadow-md h-screen overflow-hidden transition-all duration-300`}
     >
       <div className="p-4 text-xl font-bold border-b border-white text-white">
         Menu

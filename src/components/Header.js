@@ -2,7 +2,7 @@ import { FaChevronLeft, FaBars } from "react-icons/fa";
 
 function Header({ onToggleSidebar, isSidebarOpen }) {
   return (
-    <header className="flex items-center justify-between p-4 bg-black shadow-md">
+    <header className="flex items-center justify-between p-4 bg-gray-800 shadow-md">
       <button
         onClick={onToggleSidebar}
         className="text-xl text-white p-2 border border-white rounded-md transition-all duration-300 hover:bg-white hover:text-black hover:border-black"
