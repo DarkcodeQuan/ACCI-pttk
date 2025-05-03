@@ -15,13 +15,22 @@ export default function Dashboard() {
       name: "Trần Thị B", 
       email: "tranthib@example.com",
       examType: "Ngoại ngữ",
-      paymentStatus: "Chưa thanh toán"
+      paymentStatus: "Chưa thanh toán",
+      groupName: "Nhóm Alpha"
     },
     { 
       name: "Lê Văn C", 
       email: "levanc@example.com",
       examType: "Tin học",
-      paymentStatus: "Đã thanh toán"
+      paymentStatus: "Đã thanh toán",
+      groupName: "" // cá nhân
+    },
+    { 
+      name: "Phạm Văn D", 
+      email: "phamvand@example.com",
+      examType: "Ngoại ngữ",
+      paymentStatus: "Đã thanh toán",
+      groupName: "Nhóm Beta"
     },
   ]);
 
